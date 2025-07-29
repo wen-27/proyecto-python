@@ -3,7 +3,11 @@ from utils.helpers import *
 import time
 
 ARCHIVO_MUSICA = "data/musica.json"
-
+if not os.path.exists(ARCHIVO_MUSICA):
+    os.makedirs(os.path.dirname(ARCHIVO_MUSICA), exist_ok=True)
+    with open(ARCHIVO_MUSICA, 'w', encoding='utf-8') as f:
+        f.write('[]')  # Archivo JSON vacío
+        
 def obtener_ultimo_id(datos):
     """Obtiene el último ID de una lista de diccionarios con clave 'id'"""
     return max(item['id'] for item in datos) if datos else 0

@@ -3,7 +3,11 @@ from utils.helpers import *
 import time
 
 ARCHIVO_PELICULAS = "data/peliculas.json"
-
+if not os.path.exists(ARCHIVO_PELICULAS):
+    os.makedirs(os.path.dirname(ARCHIVO_PELICULAS), exist_ok=True)
+    with open(ARCHIVO_PELICULAS, 'w', encoding='utf-8') as f:
+        f.write('[]')  # Archivo JSON vacío
+        
 def obtener_ultimo_id_peliculas():
     """Obtiene el último ID de las películas existentes"""
     peliculas = leer_json(ARCHIVO_PELICULAS)

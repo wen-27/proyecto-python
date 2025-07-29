@@ -3,6 +3,11 @@ from utils.helpers import *
 
 ARCHIVO_LIBROS = "data/libros.json"
 
+if not os.path.exists(ARCHIVO_LIBROS):
+    os.makedirs(os.path.dirname(ARCHIVO_LIBROS), exist_ok=True)
+    with open(ARCHIVO_LIBROS, 'w', encoding='utf-8') as f:
+        f.write('[]')  # Archivo JSON vacío
+
 def obtener_ultimo_id():
     """Obtiene el último ID de los libros existentes"""
     libros = leer_json(ARCHIVO_LIBROS)

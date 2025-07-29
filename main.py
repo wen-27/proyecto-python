@@ -11,7 +11,12 @@ from controllers.peliculas import (
     registrar_pelicula,
     mostrar_peliculas
 )
+from controllers.buscar import (
+    buscar_por_creador,
+    buscar_por_genero,
+    buscar_por_titulo,
 
+)
 from utils.menus import (
     menu_principal,
     nuevo_elemento,
@@ -74,13 +79,14 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    pass
+                    termino = input("Ingrese el termino a buscar")
+                    buscar_por_titulo(termino)
                 elif opcion == "2":
-                    pass
+                    termino = input("Ingrese el termino a buscar")
+                    buscar_por_creador(termino)
                 elif opcion == "3":
-                    pass
-                elif opcion == "4":
-                    pass
+                    termino = input("Ingrese el termino a buscar")
+                    buscar_por_genero(termino)
                 elif opcion == "5":
                     break
                 else:
