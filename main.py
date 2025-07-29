@@ -1,21 +1,15 @@
 from utils.screenControllers import limpiar_pantalla, pausar_pantalla
 from controllers.libros import (
-    listar_equipos,
-    crear_equipo,
-    editar_equipo,
-    eliminar_equipo
+    registrar_libro,
+    mostrar_libros,
 )
 from controllers.musica import (
-    listar_jugadores,
-    crear_jugador,
-    editar_jugador,
-    eliminar_jugador
+   registrar_cancion,
+   mostrar_canciones
 )
 from controllers.peliculas import (
-    ver_estadisticas,
-    registrar_transferencia,
-    editar_transferencia,
-    eliminar_transferencia
+    registrar_pelicula,
+    mostrar_peliculas
 )
 
 from utils.menus import (
@@ -42,14 +36,12 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    pass
+                    registrar_libro()
                 elif opcion == "2":
-                    pass
+                    registrar_cancion()
                 elif opcion == "3":
-                    pass
+                    registrar_pelicula()
                 elif opcion == "4":
-                    pass
-                elif opcion == "5":
                     break
                 else:
                     print("Opción inválida. Intente de nuevo.")
@@ -63,14 +55,12 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    pass
+                    mostrar_libros()
                 elif opcion == "2":
-                    pass
+                    mostrar_canciones()
                 elif opcion == "3":
-                    pass
+                    mostrar_peliculas()
                 elif opcion == "4":
-                    pass
-                elif opcion == "5":
                     break
                 else:
                     print("Opción inválida. Intente de nuevo.")
