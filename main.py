@@ -1,32 +1,9 @@
 from utils.screenControllers import limpiar_pantalla, pausar_pantalla
-from controllers.libros import (
-    registrar_libro,
-    mostrar_libros,
-)
-from controllers.musica import (
-   registrar_cancion,
-   mostrar_canciones
-)
-from controllers.peliculas import (
-    registrar_pelicula,
-    mostrar_peliculas
-)
-from controllers.buscar import (
-    buscar_por_creador,
-    buscar_por_genero,
-    buscar_por_titulo,
-
-)
-from utils.menus import (
-    menu_principal,
-    nuevo_elemento,
-    menu_ver_elementos,
-    menu_buscar,
-    menu_editar,
-    ver_elementos_categoria,
-    guardar_cargar
-
-)
+from controllers.libros import *
+from controllers.musica import *
+from controllers.peliculas import *
+from controllers.buscar import *
+from utils.menus import *
 
 def main():
     while True:
@@ -43,9 +20,9 @@ def main():
                 if opcion == "1":
                     registrar_libro()
                 elif opcion == "2":
-                    registrar_cancion()
-                elif opcion == "3":
                     registrar_pelicula()
+                elif opcion == "3":
+                    registrar_cancion()
                 elif opcion == "4":
                     break
                 else:
@@ -53,7 +30,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "2":  # Menú jugadores
+        elif opcion == "2":  
             while True:
                 limpiar_pantalla()
                 print(menu_ver_elementos)
@@ -62,9 +39,9 @@ def main():
                 if opcion == "1":
                     mostrar_libros()
                 elif opcion == "2":
-                    mostrar_canciones()
-                elif opcion == "3":
                     mostrar_peliculas()
+                elif opcion == "3":
+                    mostrar_canciones()
                 elif opcion == "4":
                     break
                 else:

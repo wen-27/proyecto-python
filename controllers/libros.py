@@ -1,16 +1,25 @@
 from utils.screenControllers import *
 from utils.helpers import *
 
-ARCHIVO_LIBROS = "data/libros.json"
+ARCHIVO_LIBROS = "./data/libros.json"
 
-if not os.path.exists(ARCHIVO_LIBROS):
-    os.makedirs(os.path.dirname(ARCHIVO_LIBROS), exist_ok=True)
-    with open(ARCHIVO_LIBROS, 'w', encoding='utf-8') as f:
-        f.write('[]')  # Archivo JSON vacío
+def cargar_libros():
+    if not os.path.exists(ARCHIVO_LIBROS):
+        return []
+
+    with open(ARCHIVO_LIBROS, 'r', encoding='utf-8') as f:
+        contenido = f.read().strip()
+        if not contenido:
+            return []
+        try:
+            return json.loads(contenido)
+        except json.JSONDecodeError:
+            print("⚠️ Error: el archivo de libros no contiene un JSON válido.")
+            return []
 
 def obtener_ultimo_id():
     """Obtiene el último ID de los libros existentes"""
-    libros = leer_json(ARCHIVO_LIBROS)
+    libros = cargar_libros()
     return max(libro['id'] for libro in libros) if libros else 0
 
 def registrar_libro():
@@ -29,7 +38,7 @@ def registrar_libro():
         if not nombre_libro:
             print("Error: El nombre no puede estar vacío")
             continue
-        if any(libro["nombre"].lower() == nombre_libro.lower() for libro in libros):
+        if any(libro["nombre"].lower() == nombre_libro.lower() for libro in libros):            
             print("Error: Este título ya existe. Ingrese uno nuevo.")
             continue
 
@@ -96,8 +105,7 @@ def registrar_libro():
             "valoracion": valoracion,
             "fecha_registro": obtener_fecha_actual()
         }
-        libros.append(nuevo_libro)
-        agregar_diccionario_a_json(ARCHIVO_LIBROS, libros)
+        agregar_diccionario_a_json(ARCHIVO_LIBROS, nuevo_libro)
         print(f"\nLibro '{nombre_libro}' registrado exitosamente con ID {nuevo_id}.")
         break
 

@@ -2,15 +2,25 @@ from utils.screenControllers import *
 from utils.helpers import *
 import time
 
-ARCHIVO_PELICULAS = "data/peliculas.json"
-if not os.path.exists(ARCHIVO_PELICULAS):
-    os.makedirs(os.path.dirname(ARCHIVO_PELICULAS), exist_ok=True)
-    with open(ARCHIVO_PELICULAS, 'w', encoding='utf-8') as f:
-        f.write('[]')  # Archivo JSON vacío
-        
+ARCHIVO_PELICULAS = "./data/peliculas.json"
+
+def cargar_peliculas():
+    if not os.path.exists(ARCHIVO_PELICULAS):
+        return []
+
+    with open(ARCHIVO_PELICULAS, 'r', encoding='utf-8') as f:
+        contenido = f.read().strip()
+        if not contenido:
+            return []
+        try:
+            return json.loads(contenido)
+        except json.JSONDecodeError:
+            print("⚠️ Error: el archivo de libros no contiene un JSON válido.")
+            return []
+    
 def obtener_ultimo_id_peliculas():
     """Obtiene el último ID de las películas existentes"""
-    peliculas = leer_json(ARCHIVO_PELICULAS)
+    peliculas = cargar_peliculas()
     return max(pelicula['id'] for pelicula in peliculas) if peliculas else 0
 
 def registrar_pelicula():
@@ -97,8 +107,7 @@ def registrar_pelicula():
             "valoracion": valoracion,
             "fecha_registro": time.strftime("%Y-%m-%d %H:%M:%S")
         }
-        peliculas.append(nueva_pelicula)
-        agregar_diccionario_a_json(ARCHIVO_PELICULAS, peliculas)
+        agregar_diccionario_a_json(ARCHIVO_PELICULAS, nueva_pelicula)
         print(f"\nPelícula '{titulo}' registrada exitosamente con ID {nuevo_id}.")
         break
 

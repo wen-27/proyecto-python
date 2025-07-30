@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "id": 1,
+        "nombre": "asdad",
+        "artista": "adasd",
+        "genero": "Pop",
+        "a\u00f1o": 1955,
+        "duracion": "9:02",
+        "valoracion": "5\u2605",
+        "fecha_registro": "2025-07-29 21:35:28"
+    }
+]
