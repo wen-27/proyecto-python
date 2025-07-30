@@ -148,3 +148,42 @@ def mostrar_canciones():
               f"{cancion.get('valoracion', 'Sin valorar'):<10} {cancion.get('fecha_registro', 'N/A'):<20}")
     
     print(f"\nTotal de canciones: {len(canciones)}")
+
+def ver_categoria_por_musica():
+    """Muestra canciones filtradas por género"""
+    canciones = leer_json(ARCHIVO_MUSICA)
+
+    if not canciones:
+        print("\nNo hay canciones registradas")
+        return
+        
+    # Obtenemos todos los géneros disponibles
+    generos_disponibles = sorted({cancion["genero"] for cancion in canciones})
+        
+    print("\n=== FILTRAR POR GÉNERO ===")
+    print(f"Géneros disponibles: {', '.join(generos_disponibles)}")
+        
+    while True:
+        genero = input("\nIngrese el género que desea ver (o '0' para cancelar): ").strip().title()
+        
+        if genero == "0":
+            return
+        if not genero:
+            print("Error: Debe ingresar un género")
+            continue
+        
+        # Buscamos coincidencias
+        canciones_filtradas = [c for c in canciones if c["genero"].lower() == genero.lower()]
+        
+        if not canciones_filtradas:
+            print(f"\nNo se encontraron canciones del género '{genero}'. Intente con otro.")
+            continue
+        
+        # Mostramos resultados
+        print(f"\n=== CANCIONES DEL GÉNERO {genero.upper()} ===")
+        print(f"{'Canción':<25} {'Artista':<25}")
+        print("-" * 50)
+        for cancion in canciones_filtradas:
+            print(f"{cancion['nombre']:<25} {cancion['artista']:<25}")
+        print(f"\nTotal encontrados: {len(canciones_filtradas)}")
+        break
