@@ -148,3 +148,11 @@ def mostrar_canciones():
               f"{cancion.get('valoracion', 'Sin valorar'):<10} {cancion.get('fecha_registro', 'N/A'):<20}")
     
     print(f"\nTotal de canciones: {len(canciones)}")
+
+def ver_categoria_por_musica():
+
+    """muestra canciones filtradas por un genero especifico que ingrese el usuario"""
+    canciones = leer_json(ARCHIVO_MUSICA)
+
+    if not canciones:
+        print("\nNo hay libros registrados")

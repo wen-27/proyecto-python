@@ -159,3 +159,44 @@ def buscar_por_id():
             return
     
     print(f"\nNo se encontró ningún libro con ID: {id_buscar}")
+
+def ver_por_categoria_libros():
+
+    """Muestra libros filtrando por un género específico que ingrese el usuario"""
+    libros = leer_json(ARCHIVO_LIBROS)
+    
+    if not libros:
+        print("\nNo hay libros registrados.")
+        return
+        
+    # Obtenemos todos los géneros disponibles (sin repetir)
+    generos_disponibles = sorted({libro["genero"] for libro in libros})
+        
+    print("\n=== FILTRAR POR GÉNERO ===")
+    print(f"Géneros disponibles: {', '.join(generos_disponibles)}")
+        
+    while True:
+            genero = input("\nIngrese el género que desea ver (o '0' para cancelar): ").strip().title()
+            
+            if genero == "0":
+                return
+            if not genero:
+                print("Error: Debe ingresar un género")
+                continue
+            
+            # Buscamos coincidencias (insensible a mayúsculas/minúsculas)
+            libros_filtrados = [libro for libro in libros if libro["genero"].lower() == genero.lower()]
+            
+            if not libros_filtrados:
+                print(f"\nNo se encontraron libros del género '{genero}'. Intente con otro.")
+                print(f"Géneros válidos: {', '.join(generos_disponibles)}")
+                continue
+            
+            # Mostramos resultados
+            print(f"\n=== LIBROS DEL GÉNERO {genero.upper()} ===")
+            print(f"{'Título':<25} {'Autor':<25}")
+            print("-" * 50)
+            for libro in libros_filtrados:
+                print(f"{libro['nombre']:<25} {libro['autor']:<25}")
+            print(f"\nTotal encontrados: {len(libros_filtrados)}")
+            break
