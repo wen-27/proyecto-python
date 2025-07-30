@@ -118,7 +118,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "6":  # Menú transferencias
+        elif opcion == "6":  #ver elementos por categoria
             while True:
                 limpiar_pantalla()
                 print(ver_elementos_categoria)
@@ -136,31 +136,7 @@ def main():
                     print("Opción inválida. Intente de nuevo.")
                 
                 pausar_pantalla()
-
-        elif opcion == "7":  # Menú transferencias
-            while True:
-                limpiar_pantalla()
-                print(guardar_cargar)
-                opcion = input("Seleccione una opción: ").strip()
-
-                if opcion == "1":
-                    pass
-                elif opcion == "2":
-                    pass
-                elif opcion == "3":
-                    pass
-                elif opcion == "4":
-                    pass
-                elif opcion == "5":
-                    pass
-                elif opcion == "6":
-                    break
-                else:
-                    print("Opción inválida. Intente de nuevo.")
-                
-                pausar_pantalla()
-
-        elif opcion == "7":
+        elif opcion == "7":  # Salir del programa
             print("Saliendo del programa...")
             break
 
