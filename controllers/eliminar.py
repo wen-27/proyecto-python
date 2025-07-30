@@ -16,9 +16,9 @@ def _eliminar_elementos(archivo, campo, termino, resultados):
 def eliminar_por_titulo(termino):
     resultados = []
     try:
-        _eliminar_elementos(archivo_libros, "titulo", termino, resultados)
-        _eliminar_elementos(archivo_musica, "titulo", termino, resultados)
-        _eliminar_elementos(archivo_peliculas, "titulo", termino, resultados)
+        _eliminar_elementos(archivo_libros, "nombre", termino, resultados)
+        _eliminar_elementos(archivo_musica, "nombre", termino, resultados)
+        _eliminar_elementos(archivo_peliculas, "nombre", termino, resultados)
     except Exception as e:
         print(f"\nError en la eliminación: {str(e)}")
     return resultados
