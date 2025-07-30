@@ -12,7 +12,7 @@ def main():
         print(menu_principal)
         opcion = input("Seleccione una opción: ").strip()
 
-        if opcion == "1":  # Menú equipos
+        if opcion == "1":  # Menú registrar elementos
             while True:
                 limpiar_pantalla()
                 print(nuevo_elemento)
@@ -31,7 +31,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "2":  
+        elif opcion == "2":  # mostrar elementos
             while True:
                 limpiar_pantalla()
                 print(menu_ver_elementos)
@@ -50,7 +50,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "3":  # Menú técnicos
+        elif opcion == "3":  # buscar elementos
             while True:
                 limpiar_pantalla()
                 print(menu_buscar)
@@ -72,17 +72,23 @@ def main():
                 
                 pausar_pantalla()
         
-        elif opcion == "4":  # Menú transferencias
+        elif opcion == "4":  # editar los elementos
             while True:
                 limpiar_pantalla()
                 print(menu_editar)
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
+                    termino= str(input("Ingrese el termino a buscar "))
+                    nuevo_dato=str(input("ingresa el nuevo termino"))
                     editar_por_titulo(termino, nuevo_dato)
                 elif opcion == "2":
+                    termino= str(input("Ingrese el termino a buscar "))
+                    nuevo_dato=str(input("ingresa el nuevo termino"))
                     editar_por_autor(termino, nuevo_dato)
                 elif opcion == "3":
+                    termino= str(input("Ingrese el termino a buscar "))
+                    nuevo_dato=str(input("ingresa el nuevo termino"))
                     editar_por_genero(termino, nuevo_dato)
                 elif opcion == "4":
                     pass
@@ -93,7 +99,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "5":  # Menú transferencias
+        elif opcion == "5":  # eliminar los elementos
             while True:
                 limpiar_pantalla()
                 print(ver_elementos_categoria)
