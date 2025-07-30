@@ -11,7 +11,7 @@ menu_principal = """
 7. Guardar y Cargar Colección
 8. Salir
 ===========================================
-Selecciona una opción (1-8): 
+ 
 """
 
 nuevo_elemento = """
@@ -24,7 +24,6 @@ nuevo_elemento = """
 3. Música
 4. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-4):
 """
 menu_ver_elementos = """
 ===========================================
@@ -36,7 +35,7 @@ menu_ver_elementos = """
 3. Ver Toda la Música
 4. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-4):
+
 
 """
 
@@ -50,7 +49,7 @@ menu_buscar = """
 3. Buscar por Género
 4. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-4):
+
 """
 
 menu_editar = """
@@ -64,7 +63,7 @@ menu_editar = """
 4. Editar Valoración
 5. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-5):
+
 """
 
 ver_elementos_categoria = """
@@ -77,7 +76,7 @@ ver_elementos_categoria = """
 3. Ver Música
 4. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-4):
+
 """
 
 guardar_cargar = """
@@ -89,6 +88,6 @@ guardar_cargar = """
 2. Cargar una Colección Guardada
 3. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-3):
+
 """
 

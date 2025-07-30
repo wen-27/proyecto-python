@@ -2,15 +2,25 @@ from utils.screenControllers import *
 from utils.helpers import *
 import time
 
-ARCHIVO_PELICULAS = "data/peliculas.json"
-if not os.path.exists(ARCHIVO_PELICULAS):
-    os.makedirs(os.path.dirname(ARCHIVO_PELICULAS), exist_ok=True)
-    with open(ARCHIVO_PELICULAS, 'w', encoding='utf-8') as f:
-        f.write('[]')  # Archivo JSON vacío
-        
+ARCHIVO_PELICULAS = "./data/peliculas.json"
+
+def cargar_peliculas():
+    if not os.path.exists(ARCHIVO_PELICULAS):
+        return []
+
+    with open(ARCHIVO_PELICULAS, 'r', encoding='utf-8') as f:
+        contenido = f.read().strip()
+        if not contenido:
+            return []
+        try:
+            return json.loads(contenido)
+        except json.JSONDecodeError:
+            print("⚠️ Error: el archivo de libros no contiene un JSON válido.")
+            return []
+    
 def obtener_ultimo_id_peliculas():
     """Obtiene el último ID de las películas existentes"""
-    peliculas = leer_json(ARCHIVO_PELICULAS)
+    peliculas = cargar_peliculas()
     return max(pelicula['id'] for pelicula in peliculas) if peliculas else 0
 
 def registrar_pelicula():
@@ -97,8 +107,7 @@ def registrar_pelicula():
             "valoracion": valoracion,
             "fecha_registro": time.strftime("%Y-%m-%d %H:%M:%S")
         }
-        peliculas.append(nueva_pelicula)
-        agregar_diccionario_a_json(ARCHIVO_PELICULAS, peliculas)
+        agregar_diccionario_a_json(ARCHIVO_PELICULAS, nueva_pelicula)
         print(f"\nPelícula '{titulo}' registrada exitosamente con ID {nuevo_id}.")
         break
 
@@ -123,3 +132,42 @@ def mostrar_peliculas():
               f"{pelicula.get('valoracion', 'Sin valorar'):<10} {pelicula.get('fecha_registro', 'N/A'):<20}")
     
     print(f"\nTotal de películas: {len(peliculas)}")
+
+def ver_categoria_por_peliculas():
+    """Muestra películas filtradas por un género específico"""
+    peliculas = leer_json(ARCHIVO_PELICULAS)
+
+    if not peliculas:
+        print("\nNo hay películas registradas")
+        return
+        
+    # Obtenemos todos los géneros disponibles (sin repetir)
+    generos_disponibles = sorted({pelicula["genero"] for pelicula in peliculas})
+        
+    print("\n=== FILTRAR POR GÉNERO ===")
+    print(f"Géneros disponibles: {', '.join(generos_disponibles)}")
+        
+    while True:
+        genero = input("\nIngrese el género que desea ver (o '0' para cancelar): ").strip().title()
+        
+        if genero == "0":
+            return
+        if not genero:
+            print("Error: Debe ingresar un género")
+            continue
+        
+        # Buscamos coincidencias
+        peliculas_filtradas = [p for p in peliculas if p["genero"].lower() == genero.lower()]
+        
+        if not peliculas_filtradas:
+            print(f"\nNo se encontraron películas del género '{genero}'. Intente con otro.")
+            continue
+        
+        # Mostramos resultados
+        print(f"\n=== PELÍCULAS DEL GÉNERO {genero.upper()} ===")
+        print(f"{'Título':<25} {'Director':<25}")
+        print("-" * 50)
+        for pelicula in peliculas_filtradas:
+            print(f"{pelicula['titulo']:<25} {pelicula['director']:<25}")
+        print(f"\nTotal encontrados: {len(peliculas_filtradas)}")
+        break

@@ -1,16 +1,25 @@
 from utils.screenControllers import *
 from utils.helpers import *
 
-ARCHIVO_LIBROS = "data/libros.json"
+ARCHIVO_LIBROS = "./data/libros.json"
 
-if not os.path.exists(ARCHIVO_LIBROS):
-    os.makedirs(os.path.dirname(ARCHIVO_LIBROS), exist_ok=True)
-    with open(ARCHIVO_LIBROS, 'w', encoding='utf-8') as f:
-        f.write('[]')  # Archivo JSON vacío
+def cargar_libros():
+    if not os.path.exists(ARCHIVO_LIBROS):
+        return []
+
+    with open(ARCHIVO_LIBROS, 'r', encoding='utf-8') as f:
+        contenido = f.read().strip()
+        if not contenido:
+            return []
+        try:
+            return json.loads(contenido)
+        except json.JSONDecodeError:
+            print("⚠️ Error: el archivo de libros no contiene un JSON válido.")
+            return []
 
 def obtener_ultimo_id():
     """Obtiene el último ID de los libros existentes"""
-    libros = leer_json(ARCHIVO_LIBROS)
+    libros = cargar_libros()
     return max(libro['id'] for libro in libros) if libros else 0
 
 def registrar_libro():
@@ -29,7 +38,7 @@ def registrar_libro():
         if not nombre_libro:
             print("Error: El nombre no puede estar vacío")
             continue
-        if any(libro["nombre"].lower() == nombre_libro.lower() for libro in libros):
+        if any(libro["nombre"].lower() == nombre_libro.lower() for libro in libros):            
             print("Error: Este título ya existe. Ingrese uno nuevo.")
             continue
 
@@ -96,8 +105,7 @@ def registrar_libro():
             "valoracion": valoracion,
             "fecha_registro": obtener_fecha_actual()
         }
-        libros.append(nuevo_libro)
-        agregar_diccionario_a_json(ARCHIVO_LIBROS, libros)
+        agregar_diccionario_a_json(ARCHIVO_LIBROS, nuevo_libro)
         print(f"\nLibro '{nombre_libro}' registrado exitosamente con ID {nuevo_id}.")
         break
 
@@ -151,3 +159,64 @@ def buscar_por_id():
             return
     
     print(f"\nNo se encontró ningún libro con ID: {id_buscar}")
+
+def ver_por_categoria_libros():
+    """Muestra libros por género con mejor formato."""
+    try:
+        libros = leer_json(ARCHIVO_LIBROS)
+    except Exception as e:
+        print(f"\n⚠️ Error al cargar libros: {str(e)}")
+        return
+    
+    if not libros:
+        print("\nNo hay libros registrados.")
+        return
+        
+    # Obtenemos géneros disponibles (manejando posibles errores)
+    try:
+        generos_disponibles = sorted({libro.get('genero', '') for libro in libros if libro.get('genero')})
+    except Exception as e:
+        print(f"⚠️ Error al obtener géneros: {str(e)}")
+        return
+    
+    if not generos_disponibles:
+        print("\nNo hay géneros registrados.")
+        return
+        
+    print("\n=== FILTRAR POR GÉNERO ===")
+    print(f"📚 Géneros disponibles: {', '.join(generos_disponibles)}")
+        
+    while True:
+        genero = input("\nIngrese el género que desea ver (o '0' para cancelar): ").strip().title()
+        
+        if genero == "0":
+            return
+        if not genero:
+            print("Error: Debe ingresar un género")
+            continue
+        
+        # Buscar coincidencias (case insensitive)
+        libros_filtrados = [
+            libro for libro in libros 
+            if str(libro.get('genero', '')).lower() == genero.lower()
+        ]
+        
+        if not libros_filtrados:
+            print(f"\n❌ No se encontraron libros del género '{genero}'")
+            continue
+        
+        # Mostrar resultados
+        print(f"\n📚 LIBROS DEL GÉNERO: {genero.upper()}")
+        print("=" * 70)
+        print(f"{'Título':<30} | {'Autor':<25} | {'Año':<6}")
+        print("-" * 70)
+        
+        for libro in libros_filtrados:
+            print(
+                f"{libro.get('nombre', 'Desconocido')[:28]:<30} | "
+                f"{libro.get('autor', 'Desconocido')[:22]:<25} | "
+                f"{libro.get('año', 'N/A'):<6}"
+            )
+        
+        print(f"\nTotal encontrados: {len(libros_filtrados)}")
+        break

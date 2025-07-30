@@ -2,20 +2,26 @@ from utils.screenControllers import *
 from utils.helpers import *
 import time
 
-ARCHIVO_MUSICA = "data/musica.json"
-if not os.path.exists(ARCHIVO_MUSICA):
-    os.makedirs(os.path.dirname(ARCHIVO_MUSICA), exist_ok=True)
-    with open(ARCHIVO_MUSICA, 'w', encoding='utf-8') as f:
-        f.write('[]')  # Archivo JSON vacío
+ARCHIVO_MUSICA = "./data/musica.json"
+def cargar_musica():
+    if not os.path.exists(ARCHIVO_MUSICA):
+        return []
+
+    with open(ARCHIVO_MUSICA, 'r', encoding='utf-8') as f:
+        contenido = f.read().strip()
+        if not contenido:
+            return []
+        try:
+            return json.loads(contenido)
+        except json.JSONDecodeError:
+            print("⚠️ Error: el archivo de libros no contiene un JSON válido.")
+            return []
         
-def obtener_ultimo_id(datos):
+def obtener_ultimo_id():
     """Obtiene el último ID de una lista de diccionarios con clave 'id'"""
+    datos = cargar_musica()
     return max(item['id'] for item in datos) if datos else 0
 
-def generar_nuevo_id():
-    """Genera un nuevo ID incremental"""
-    canciones = leer_json(ARCHIVO_MUSICA)
-    return obtener_ultimo_id(canciones) + 1
 
 def registrar_cancion():
     """Registra una nueva canción con validaciones e ID incremental."""
@@ -24,7 +30,7 @@ def registrar_cancion():
     print("\n=== REGISTRAR NUEVA CANCIÓN ===")
     
     # Generar nuevo ID incremental
-    nuevo_id = generar_nuevo_id()
+    nuevo_id = obtener_ultimo_id() + 1
     print(f"\nID asignado a esta canción: {nuevo_id}\n")
 
     while True:
@@ -116,8 +122,7 @@ def registrar_cancion():
             "valoracion": valoracion,
             "fecha_registro": time.strftime("%Y-%m-%d %H:%M:%S")
         }
-        canciones.append(nueva_cancion)
-        agregar_diccionario_a_json(ARCHIVO_MUSICA, canciones)
+        agregar_diccionario_a_json(ARCHIVO_MUSICA, nueva_cancion)
         print(f"\nCanción '{nombre_cancion}' registrada exitosamente!")
         print(f"ID: {nuevo_id} | Valoración: {valoracion} | Fecha registro: {nueva_cancion['fecha_registro']}")
         break
@@ -143,3 +148,42 @@ def mostrar_canciones():
               f"{cancion.get('valoracion', 'Sin valorar'):<10} {cancion.get('fecha_registro', 'N/A'):<20}")
     
     print(f"\nTotal de canciones: {len(canciones)}")
+
+def ver_categoria_por_musica():
+    """Muestra canciones filtradas por género"""
+    canciones = leer_json(ARCHIVO_MUSICA)
+
+    if not canciones:
+        print("\nNo hay canciones registradas")
+        return
+        
+    # Obtenemos todos los géneros disponibles
+    generos_disponibles = sorted({cancion["genero"] for cancion in canciones})
+        
+    print("\n=== FILTRAR POR GÉNERO ===")
+    print(f"Géneros disponibles: {', '.join(generos_disponibles)}")
+        
+    while True:
+        genero = input("\nIngrese el género que desea ver (o '0' para cancelar): ").strip().title()
+        
+        if genero == "0":
+            return
+        if not genero:
+            print("Error: Debe ingresar un género")
+            continue
+        
+        # Buscamos coincidencias
+        canciones_filtradas = [c for c in canciones if c["genero"].lower() == genero.lower()]
+        
+        if not canciones_filtradas:
+            print(f"\nNo se encontraron canciones del género '{genero}'. Intente con otro.")
+            continue
+        
+        # Mostramos resultados
+        print(f"\n=== CANCIONES DEL GÉNERO {genero.upper()} ===")
+        print(f"{'Canción':<25} {'Artista':<25}")
+        print("-" * 50)
+        for cancion in canciones_filtradas:
+            print(f"{cancion['nombre']:<25} {cancion['artista']:<25}")
+        print(f"\nTotal encontrados: {len(canciones_filtradas)}")
+        break
