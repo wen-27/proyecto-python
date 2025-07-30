@@ -5,7 +5,7 @@ menu_principal = """
 1. Añadir un Nuevo Elemento
 2. Ver Todos los Elementos
 3. Buscar un Elemento
-4. Editar un Elemento 0
+4. Editar un Elemento 
 5. Eliminar un Elemento
 6. Ver Elementos por Categoría
 7. Guardar y Cargar Colección
