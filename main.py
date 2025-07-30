@@ -4,18 +4,27 @@ from controllers.libros import (
     mostrar_libros,
 )
 from controllers.musica import (
-   registrar_cancion,
-   mostrar_canciones
+    registrar_cancion,
+    mostrar_canciones,
 )
 from controllers.peliculas import (
     registrar_pelicula,
-    mostrar_peliculas
+    mostrar_peliculas,
 )
 from controllers.buscar import (
     buscar_por_creador,
     buscar_por_genero,
     buscar_por_titulo,
-
+)
+from controllers.editar import(
+    editar_por_titulo,
+    editar_por_autor,
+    editar_por_genero,
+)
+from controllers.eliminar import(
+    eliminar_por_titulo,
+    eliminar_por_autor,
+    _eliminar_elementos,
 )
 from utils.menus import (
     menu_principal,
@@ -24,7 +33,7 @@ from utils.menus import (
     menu_buscar,
     menu_editar,
     ver_elementos_categoria,
-    guardar_cargar
+    guardar_cargar,
 
 )
 
@@ -34,7 +43,7 @@ def main():
         print(menu_principal)
         opcion = input("Seleccione una opción: ").strip()
 
-        if opcion == "1":  # Menú equipos
+        if opcion == "1":  # Menú registrar elementos
             while True:
                 limpiar_pantalla()
                 print(nuevo_elemento)
@@ -53,7 +62,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "2":  # Menú jugadores
+        elif opcion == "2":  # mostrar elementos
             while True:
                 limpiar_pantalla()
                 print(menu_ver_elementos)
@@ -72,7 +81,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "3":  # Menú técnicos
+        elif opcion == "3":  # buscar elementos
             while True:
                 limpiar_pantalla()
                 print(menu_buscar)
@@ -94,18 +103,24 @@ def main():
                 
                 pausar_pantalla()
         
-        elif opcion == "4":  # Menú transferencias
+        elif opcion == "4":  # editar los elementos
             while True:
                 limpiar_pantalla()
                 print(menu_editar)
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    pass
+                    termino= str(input("Ingrese el termino a buscar "))
+                    nuevo_dato=str(input("ingresa el nuevo termino"))
+                    editar_por_titulo(termino, nuevo_dato)
                 elif opcion == "2":
-                    pass
+                    termino= str(input("Ingrese el termino a buscar "))
+                    nuevo_dato=str(input("ingresa el nuevo termino"))
+                    editar_por_autor(termino, nuevo_dato)
                 elif opcion == "3":
-                    pass
+                    termino= str(input("Ingrese el termino a buscar "))
+                    nuevo_dato=str(input("ingresa el nuevo termino"))
+                    editar_por_genero(termino, nuevo_dato)
                 elif opcion == "4":
                     break
                 else:
@@ -113,7 +128,7 @@ def main():
                 
                 pausar_pantalla()
 
-        elif opcion == "5":  # Menú transferencias
+        elif opcion == "5":  # eliminar los elementos
             while True:
                 limpiar_pantalla()
                 print(ver_elementos_categoria)

@@ -118,8 +118,8 @@ def mostrar_libros():
     
     for libro in libros_ordenados:
         print(f"{libro['id']:<5} {libro['nombre']:<25} {libro['autor']:<25} "
-              f"{libro['genero']:<20} {libro.get('año', 'N/A'):<6} "
-              f"{libro.get('valoracion', 'Sin valorar'):<10}")
+            f"{libro['genero']:<20} {libro.get('año', 'N/A'):<6} "
+            f"{libro.get('valoracion', 'Sin valorar'):<10}")
     
     print(f"\nTotal de libros: {len(libros)}")
 
