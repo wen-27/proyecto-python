@@ -11,8 +11,8 @@ def editar_por_titulo(termino, nuevo_dato):
         libros = leer_json(archivo_libros)
         editado = False
         for libro in libros:
-            if libro["titulo"] == termino:
-                libro["titulo"] = nuevo_dato
+            if libro["nombre"] == termino:
+                libro["nombre"] = nuevo_dato
                 resultados.append(libro)
                 editado = True
         if editado:
@@ -23,8 +23,8 @@ def editar_por_titulo(termino, nuevo_dato):
         musicas = leer_json(archivo_musica)
         editado = False
         for musica in musicas:
-            if musica["titulo"] == termino:
-                musica["titulo"] = nuevo_dato
+            if musica["nombre"] == termino:
+                musica["nombre"] = nuevo_dato
                 resultados.append(musica)
                 editado = True
         if editado:
@@ -35,8 +35,8 @@ def editar_por_titulo(termino, nuevo_dato):
         peliculas = leer_json(archivo_peliculas)
         editado = False
         for pelicula in peliculas:
-            if pelicula["titulo"] == termino:
-                pelicula["titulo"] = nuevo_dato
+            if pelicula["nombre"] == termino:
+                pelicula["nombre"] = nuevo_dato
                 resultados.append(pelicula)
                 editado = True
         if editado:
