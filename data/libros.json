@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": 1,
+        "nombre": "wen",
+        "autor": "wendy",
+        "genero": "Novela",
+        "a\u00f1o": 2023,
+        "valoracion": "5\u2605",
+        "fecha_registro": "30/07/2025"
+    }
+]
