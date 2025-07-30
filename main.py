@@ -97,7 +97,7 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    pass
+                    ver_por_categoria_libros()
                 elif opcion == "2":
                     pass
                 elif opcion == "3":
