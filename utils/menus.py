@@ -78,16 +78,3 @@ ver_elementos_categoria = """
 ===========================================
 
 """
-
-guardar_cargar = """
-===========================================
-        Guardar y Cargar Colección
-===========================================
-¿Qué deseas hacer?
-1. Guardar la Colección Actual
-2. Cargar una Colección Guardada
-3. Regresar al Menú Principal
-===========================================
-
-"""
-
