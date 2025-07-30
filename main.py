@@ -3,8 +3,8 @@ from controllers.libros import *
 from controllers.musica import *
 from controllers.peliculas import *
 from controllers.buscar import *
+from controllers.editar import *
 from utils.menus import *
-from controllers.editar import*
 
 def main():
     while True:
@@ -79,11 +79,11 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    editar_por_titulo()
+                    editar_por_titulo(termino, nuevo_dato)
                 elif opcion == "2":
-                    editar_por_autor()
+                    editar_por_autor(termino, nuevo_dato)
                 elif opcion == "3":
-                    editar_por_genero()
+                    editar_por_genero(termino, nuevo_dato)
                 elif opcion == "4":
                     pass
                 elif opcion == "5":
