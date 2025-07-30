@@ -3,111 +3,129 @@ from .musica import ARCHIVO_MUSICA as archivo_musica
 from .peliculas import ARCHIVO_PELICULAS as archivo_peliculas
 from utils.helpers import leer_json
 import json
-#editar por el titulo 
-def editar_por_titulo(termino, nuevo_dato):  
-    """version corregida que mantiene el parametro obligatorio"""
 
+def editar_por_titulo(termino, nuevo_dato):
     resultados = []
-    try: 
-        # editar libros por titulo
+    try:
+        # Libros
         libros = leer_json(archivo_libros)
+        editado = False
         for libro in libros:
             if libro["titulo"] == termino:
                 libro["titulo"] = nuevo_dato
-            with open(archivo_libros, "w") as f:
-                json.dump(libros, f)
                 resultados.append(libro)
-        # editar musica por tirulo
-        musicas= leer_json(archivo_musica)
+                editado = True
+        if editado:
+            with open(archivo_libros, "w") as f:
+                json.dump(libros, f, indent=4)
+
+        # Música
+        musicas = leer_json(archivo_musica)
+        editado = False
         for musica in musicas:
             if musica["titulo"] == termino:
                 musica["titulo"] = nuevo_dato
-            with open(archivo_musica, "w") as f:
-                json.dump(musicas, f)
                 resultados.append(musica)
-        
-        # editar peliculas por titulo
-        peliculas= leer_json(archivo_peliculas)
+                editado = True
+        if editado:
+            with open(archivo_musica, "w") as f:
+                json.dump(musicas, f, indent=4)
+
+        # Películas
+        peliculas = leer_json(archivo_peliculas)
+        editado = False
         for pelicula in peliculas:
-            if pelicula ["titulo"] == termino:
+            if pelicula["titulo"] == termino:
                 pelicula["titulo"] = nuevo_dato
-            with open(archivo_peliculas, "w") as f:
-                json.dump(peliculas, f)
                 resultados.append(pelicula)
-        
+                editado = True
+        if editado:
+            with open(archivo_peliculas, "w") as f:
+                json.dump(peliculas, f, indent=4)
 
     except Exception as e:
-        print(f"\nError en la edicion: {str(e)}")
+        print(f"\nError en la edición: {str(e)}")
     
     return resultados
-# editar por el autor 
+
 def editar_por_autor(termino, nuevo_dato):
-    """version corregida para editar por autor"""
-    
-    resultados = []
-    try: 
-        #editar libros por autor 
-        libros = leer_json(archivo_libros)
-        for libro in libros:
-            if libro["autor"] == termino:
-                libro["autor"] = nuevo_dato 
-            with open(archivo_libros, "w") as f:
-                json.dump(libro, f)
-                resultados.append(libros)
-    
-        #editar musica por autor 
-        musicas= leer_json(archivo_musica)
-        for musica  in musicas:
-            if musica["autor"] == termino:
-                musica["autor"]= nuevo_dato
-            with open (archivo_musica, "w") as f:
-                json.dump(musica, f)
-                resultados.append(musicas)
-        
-        #editar peliculas por titulo
-        peliculas= leer_json(archivo_peliculas)
-        for pelicula in peliculas:
-            if pelicula["autor"]== termino:
-                pelicula["autor"] = nuevo_dato
-            with open(archivo_peliculas, "w") as f:
-                json.dump(peliculas, f)
-                resultados.append(pelicula)
-            
-    except Exception as e:
-        print(f"\nError en la edicion: {str(e)}")
-    return resultados
-
-#editar por genero
-def editar_por_genero(termino, nuevo_dato):
-    """version corregida para editar por autor"""
-    
     resultados = []
     try:
-        #editar libros por genero
-        libros=leer_json(archivo_libros)
+        libros = leer_json(archivo_libros)
+        editado = False
         for libro in libros:
-            if libro ["genero"]== termino:
-                libro["genero"] = nuevo_dato
+            if libro["autor"] == termino:
+                libro["autor"] = nuevo_dato
+                resultados.append(libro)
+                editado = True
+        if editado:
             with open(archivo_libros, "w") as f:
-                json.dump(libro, f)
-                resultados.append(libros)
-        #editar musica por genero 
-        musicas= leer_json(archivo_musica)
+                json.dump(libros, f, indent=4)
+
+        musicas = leer_json(archivo_musica)
+        editado = False
+        for musica in musicas:
+            if musica["autor"] == termino:
+                musica["autor"] = nuevo_dato
+                resultados.append(musica)
+                editado = True
+        if editado:
+            with open(archivo_musica, "w") as f:
+                json.dump(musicas, f, indent=4)
+
+        peliculas = leer_json(archivo_peliculas)
+        editado = False
+        for pelicula in peliculas:
+            if pelicula["autor"] == termino:
+                pelicula["autor"] = nuevo_dato
+                resultados.append(pelicula)
+                editado = True
+        if editado:
+            with open(archivo_peliculas, "w") as f:
+                json.dump(peliculas, f, indent=4)
+
+    except Exception as e:
+        print(f"\nError en la edición: {str(e)}")
+    
+    return resultados
+
+def editar_por_genero(termino, nuevo_dato):
+    resultados = []
+    try:
+        libros = leer_json(archivo_libros)
+        editado = False
+        for libro in libros:
+            if libro["genero"] == termino:
+                libro["genero"] = nuevo_dato
+                resultados.append(libro)
+                editado = True
+        if editado:
+            with open(archivo_libros, "w") as f:
+                json.dump(libros, f, indent=4)
+
+        musicas = leer_json(archivo_musica)
+        editado = False
         for musica in musicas:
             if musica["genero"] == termino:
                 musica["genero"] = nuevo_dato
-            with open (archivo_musica, "w") as f:
-                json.dump(musica,f)
-                resultados.append(musicas)
-        #editar pelicula por genero
-        peliculas=leer_json(archivo_peliculas)
+                resultados.append(musica)
+                editado = True
+        if editado:
+            with open(archivo_musica, "w") as f:
+                json.dump(musicas, f, indent=4)
+
+        peliculas = leer_json(archivo_peliculas)
+        editado = False
         for pelicula in peliculas:
-            if pelicula["genero"]== termino:
+            if pelicula["genero"] == termino:
                 pelicula["genero"] = nuevo_dato
-        with open(archivo_peliculas, "w") as f:
-                json.dump(peliculas, f)
-                resultados.append(pelicula)   
-            
+                resultados.append(pelicula)
+                editado = True
+        if editado:
+            with open(archivo_peliculas, "w") as f:
+                json.dump(peliculas, f, indent=4)
+
     except Exception as e:
-        print(f"\nError en la edicion: {str(e)}")
+        print(f"\nError en la edición: {str(e)}")
+    
     return resultados
