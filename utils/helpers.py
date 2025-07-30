@@ -2,8 +2,16 @@ import os
 import json
 from datetime import datetime
 def leer_json(nombre_archivo):
-        with open(nombre_archivo, "r", encoding="utf-8") as arch:
-            return json.load(arch)
+    if not os.path.exists(nombre_archivo):
+            os.makedirs(os.path.dirname(nombre_archivo), exist_ok=True)
+            with open(nombre_archivo, 'w', encoding='utf-8') as f:
+                f.write('[]')  # JSON válido, lista vacía
+
+    with open(nombre_archivo, "r", encoding="utf-8") as arch:
+        contenido = arch.read().strip()
+        if not contenido:
+            return []
+        return json.loads(contenido)
         
 def escribir_json(nombre_archivo, diccionario):
         with open(nombre_archivo, "w", encoding="utf-8") as archivo:

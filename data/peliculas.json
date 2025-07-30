@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": 1,
+        "titulo": "asd",
+        "director": "ads",
+        "genero": "Comedia",
+        "a\u00f1o": 1900,
+        "valoracion": "5\u2605",
+        "fecha_registro": "2025-07-29 21:31:37"
+    }
+]

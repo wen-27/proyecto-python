@@ -24,7 +24,6 @@ nuevo_elemento = """
 3. Música
 4. Regresar al Menú Principal
 ===========================================
-Selecciona una opción (1-4):
 """
 menu_ver_elementos = """
 ===========================================
