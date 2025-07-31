@@ -13,7 +13,6 @@ def buscar(termino, tipo):
             if libro[tipo] == termino:
                 for i in libros:
                     print(i)
-                    #print(tabulate.tabulate(libros, headers="keys", tablefmt="fancy_grid"))
 
         # Música
         musicas = leer_json(archivo_musica)
