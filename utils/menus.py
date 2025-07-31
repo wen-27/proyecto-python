@@ -8,10 +8,8 @@ menu_principal = """
 4. Editar un Elemento 
 5. Eliminar un Elemento
 6. Ver Elementos por Categoría
-7. Guardar y Cargar Colección
-8. Salir
+7. Salir
 ===========================================
- 
 """
 
 nuevo_elemento = """
@@ -63,6 +61,17 @@ menu_editar = """
 4. Editar Valoración
 5. Regresar al Menú Principal
 ===========================================
+"""
+menu_eliminar="""
+===========================================
+        Eliminar un Elemento
+===========================================
+¿Cómo deseas eliminar?
+1. Eliminar por Título
+2. Eliminar por Identificador Único
+3. Regresar al Menú Principal
+===========================================
+Selecciona una opción (1-3):
 
 """
 
