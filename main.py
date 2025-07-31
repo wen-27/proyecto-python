@@ -58,14 +58,17 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    termino = input("Ingrese el termino a buscar :")
-                    buscar_por_titulo(termino)
+                    tipo = "nombre"
+                    termino = input(f"Ingrese el {tipo} a buscar :")
+                    buscar(termino, tipo)
                 elif opcion == "2":
-                    termino = input("Ingrese el termino a buscar :")
-                    buscar_por_creador(termino)
+                    tipo = "autor"
+                    termino = input(f"Ingrese el {tipo} a buscar :")
+                    buscar(termino, tipo)
                 elif opcion == "3":
-                    termino = input("Ingrese el termino a buscar :")
-                    buscar_por_genero(termino)
+                    tipo = "genero"
+                    termino = input(f"Ingrese el {tipo} a buscar :")
+                    buscar(termino, tipo)
                 elif opcion == "5":
                     break
                 else:
