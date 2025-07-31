@@ -11,13 +11,13 @@ def main():
     while True:
         limpiar_pantalla()
         print(menu_principal)
-        opcion = input("Seleccione una opción: ").strip()
+        opcion = input("Seleccione una opción: ").strip().lower()
 
         if opcion == "1":  # Menú registrar elementos
             while True:
                 limpiar_pantalla()
                 print(nuevo_elemento)
-                opcion = input("Seleccione una opción: ").strip()
+                opcion = input("Seleccione una opción: ").strip().lower()
 
                 if opcion == "1":
                     registrar_libro()
@@ -36,7 +36,7 @@ def main():
             while True:
                 limpiar_pantalla()
                 print(menu_ver_elementos)
-                opcion = input("Seleccione una opción: ").strip()
+                opcion = input("Seleccione una opción: ").strip().lower()
 
                 if opcion == "1":
                     mostrar_libros()
@@ -59,17 +59,17 @@ def main():
 
                 if opcion == "1":
                     tipo = "nombre"
-                    termino = input(f"Ingrese el {tipo} a buscar :")
+                    termino = input(f"Ingrese el {tipo} a buscar :").lower().strip()    
                     buscar(termino, tipo)
                 elif opcion == "2":
                     tipo = "autor"
-                    termino = input(f"Ingrese el {tipo} a buscar :")
+                    termino = input(f"Ingrese el {tipo} a buscar :").lower().strip()            
                     buscar(termino, tipo)
                 elif opcion == "3":
                     tipo = "genero"
-                    termino = input(f"Ingrese el {tipo} a buscar :")
+                    termino = input(f"Ingrese el {tipo} a buscar :").lower().strip()
                     buscar(termino, tipo)
-                elif opcion == "5":
+                elif opcion == "4":
                     break
                 else:
                     print("Opción inválida. Intente de nuevo.")
@@ -80,27 +80,27 @@ def main():
             while True:
                 limpiar_pantalla()
                 print(menu_editar)
-                opcion = input("Seleccione una opción: ").strip()
+                opcion = input("Seleccione una opción: ").strip().lower()
 
                 if opcion == "1":
                     tipo = "nombre"
-                    termino= str(input(f"Ingrese el {tipo} a editar "))
-                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    termino= str(input(f"Ingrese el {tipo} a editar ")).lower().strip()
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}")).lower().strip()
                     editar(termino, nuevo_dato, tipo)
                 elif opcion == "2":
                     tipo= "autor"
-                    termino= str(input(f"Ingrese el {tipo} a editar "))
-                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    termino= str(input(f"Ingrese el {tipo} a editar ")).lower().strip()
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}")).lower().strip()
                     editar(termino, nuevo_dato, tipo)
                 elif opcion == "3":
                     tipo= "genero"
-                    termino= str(input(f"Ingrese el {tipo} a editar "))
-                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    termino= str(input(f"Ingrese el {tipo} a editar ")).lower().strip()
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}")).lower().strip()
                     editar(termino, nuevo_dato, tipo)
                 elif opcion == "4":
                     tipo= "valoracion"
-                    termino= str(input(f"Ingrese el {tipo} a editar "))
-                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    termino= str(input(f"Ingrese el {tipo} a editar ")).lower().strip()
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}")).lower().strip()
                     editar(termino, nuevo_dato, tipo)
                 elif opcion == "5":
                     break
@@ -113,19 +113,19 @@ def main():
             while True:
                 limpiar_pantalla()
                 print(menu_eliminar)
-                opcion = input("Seleccione una opción: ").strip()
+                opcion = input("Seleccione una opción: ").strip().lower()
 
                 if opcion == "1":
                     mostrar_libros()
                     mostrar_peliculas()
                     mostrar_canciones()
-                    termino= input("Ingrese el termino que quieras eliminar ")
+                    termino= input("Ingrese el termino que quieras eliminar ").lower().strip()
                     eliminar_por_titulo(termino)
                 elif opcion == "2":
                     mostrar_libros()
                     mostrar_peliculas()
                     mostrar_canciones()
-                    termino= input("Ingrese el termino que quieras eliminar ")
+                    termino= input("Ingrese el termino que quieras eliminar ").lower().strip()
                     eliminar_por_id(termino)
                 elif opcion == "3":
                     break
@@ -138,7 +138,7 @@ def main():
             while True:
                 limpiar_pantalla()
                 print(ver_elementos_categoria)
-                opcion = input("Seleccione una opción: ").strip()
+                opcion = input("Seleccione una opción: ").strip().lower()
 
                 if opcion == "1":
                     ver_por_categoria_libros()
