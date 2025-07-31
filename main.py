@@ -4,6 +4,7 @@ from controllers.musica import *
 from controllers.peliculas import *
 from controllers.buscar import *
 from controllers.editar import *
+from controllers.eliminar import *
 from utils.menus import *
 
 def main():
@@ -25,7 +26,7 @@ def main():
                 elif opcion == "3":
                     registrar_cancion()
                 elif opcion == "4":
-                    pass
+                    break
                 else:
                     print("Opción inválida. Intente de nuevo.")
                 
@@ -79,19 +80,25 @@ def main():
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    termino= str(input("Ingrese el termino a buscar "))
-                    nuevo_dato=str(input("ingresa el nuevo termino"))
-                    editar_por_titulo(termino, nuevo_dato)
+                    tipo = "nombre"
+                    termino= str(input(f"Ingrese el {tipo} a editar "))
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    editar(termino, nuevo_dato, tipo)
                 elif opcion == "2":
-                    termino= str(input("Ingrese el termino a buscar "))
-                    nuevo_dato=str(input("ingresa el nuevo termino"))
-                    editar_por_autor(termino, nuevo_dato)
+                    tipo= "autor"
+                    termino= str(input(f"Ingrese el {tipo} a editar "))
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    editar(termino, nuevo_dato, tipo)
                 elif opcion == "3":
-                    termino= str(input("Ingrese el termino a buscar "))
-                    nuevo_dato=str(input("ingresa el nuevo termino"))
-                    editar_por_genero(termino, nuevo_dato)
+                    tipo= "genero"
+                    termino= str(input(f"Ingrese el {tipo} a editar "))
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    editar(termino, nuevo_dato, tipo)
                 elif opcion == "4":
-                    pass
+                    tipo= "valoracion"
+                    termino= str(input(f"Ingrese el {tipo} a editar "))
+                    nuevo_dato=str(input(f"ingresa el nuevo {tipo}"))
+                    editar(termino, nuevo_dato, tipo)
                 elif opcion == "5":
                     break
                 else:
@@ -102,16 +109,22 @@ def main():
         elif opcion == "5":  # eliminar los elementos
             while True:
                 limpiar_pantalla()
-                print(ver_elementos_categoria)
+                print(menu_eliminar)
                 opcion = input("Seleccione una opción: ").strip()
 
                 if opcion == "1":
-                    pass
+                    mostrar_libros()
+                    mostrar_peliculas()
+                    mostrar_canciones()
+                    termino= input("Ingrese el termino que quieras eliminar ")
+                    eliminar_por_titulo(termino)
                 elif opcion == "2":
-                    pass
+                    mostrar_libros()
+                    mostrar_peliculas()
+                    mostrar_canciones()
+                    termino= input("Ingrese el termino que quieras eliminar ")
+                    eliminar_por_id(termino)
                 elif opcion == "3":
-                    pass
-                elif opcion == "4":
                     break
                 else:
                     print("Opción inválida. Intente de nuevo.")
@@ -126,6 +139,7 @@ def main():
 
                 if opcion == "1":
                     ver_por_categoria_libros()
+                    
                 elif opcion == "2":
                     ver_categoria_por_peliculas()
                 elif opcion == "3":

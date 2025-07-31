@@ -19,26 +19,20 @@ def eliminar_por_titulo(termino):
         _eliminar_elementos(archivo_libros, "nombre", termino, resultados)
         _eliminar_elementos(archivo_musica, "nombre", termino, resultados)
         _eliminar_elementos(archivo_peliculas, "nombre", termino, resultados)
+        print(f"El titulo {termino} fue eliminado exitosamente")
     except Exception as e:
         print(f"\nError en la eliminación: {str(e)}")
     return resultados
 
-def eliminar_por_autor(termino):
+def eliminar_por_id(termino):
     resultados = []
     try:
-        _eliminar_elementos(archivo_libros, "autor", termino, resultados)
-        _eliminar_elementos(archivo_musica, "autor", termino, resultados)
-        _eliminar_elementos(archivo_peliculas, "autor", termino, resultados)
+        _eliminar_elementos(archivo_libros, "id", termino, resultados)
+        _eliminar_elementos(archivo_musica, "id", termino, resultados)
+        _eliminar_elementos(archivo_peliculas, "id", termino, resultados)
+        print(f"El id {termino} fue eliminado exitosamente")
     except Exception as e:
         print(f"\nError en la eliminación: {str(e)}")
     return resultados
 
-def eliminar_por_genero(termino):
-    resultados = []
-    try:
-        _eliminar_elementos(archivo_libros, "genero", termino, resultados)
-        _eliminar_elementos(archivo_musica, "genero", termino, resultados)
-        _eliminar_elementos(archivo_peliculas, "genero", termino, resultados)
-    except Exception as e:
-        print(f"\nError en la eliminación: {str(e)}")
-    return resultados
+
