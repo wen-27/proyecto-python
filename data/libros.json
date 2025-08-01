@@ -7,5 +7,23 @@
         "a\u00f1o": 2013,
         "valoracion": "5\u2605",
         "fecha_registro": "31/07/2025"
+    },
+    {
+        "id": 3,
+        "nombre": "aasfdasdad",
+        "autor": "asdasdasd",
+        "genero": "Novela",
+        "a\u00f1o": 1995,
+        "valoracion": "4\u2605",
+        "fecha_registro": "31/07/2025"
+    },
+    {
+        "id": 4,
+        "nombre": "wen",
+        "autor": "asdasdasd",
+        "genero": "Novela",
+        "a\u00f1o": 1995,
+        "valoracion": "4\u2605",
+        "fecha_registro": "31/07/2025"
     }
 ]

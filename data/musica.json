@@ -1,1 +1,11 @@
-[]
+[    
+    {
+        "id": 1,
+        "nombre": "wen",
+        "autor": "asdasdasd",
+        "genero": "Novela",
+        "a\u00f1o": 1995,
+        "valoracion": "4\u2605",
+        "fecha_registro": "31/07/2025"
+    }
+]
