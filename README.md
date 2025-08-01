@@ -51,9 +51,9 @@ Este administrador de colección resuelve estas problemáticas al ofrecer una in
 
 **Para ejecutar este proyecto en tu máquina local, sigue estos pasos**
 
-- abre visual estudio code 
+- abre visual studio code 
 
-- installa la extencion de python 
+- instala la extension de python 
 
 - Clona el repositorio copiando y peghando el sigiente link:
 
