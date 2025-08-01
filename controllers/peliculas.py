@@ -100,8 +100,8 @@ def registrar_pelicula():
         # Guardar la película 
         nueva_pelicula = {
             "id": nuevo_id,
-            "titulo": titulo,
-            "director": director,
+            "nombre": titulo,
+            "autor": director,
             "genero": genero,
             "año": año,
             "valoracion": valoracion,
@@ -127,7 +127,7 @@ def mostrar_peliculas():
     print("-" * 100)
     
     for pelicula in peliculas_ordenadas:
-        print(f"{pelicula['id']:<5} {pelicula['titulo']:<25} {pelicula['director']:<20} "
+        print(f"{pelicula['id']:<5} {pelicula['nombre']:<25} {pelicula['autor']:<20} "
               f"{pelicula['genero']:<15} {pelicula['año']:<6} "
               f"{pelicula.get('valoracion', 'Sin valorar'):<10} {pelicula.get('fecha_registro', 'N/A'):<20}")
     
