@@ -1,11 +1,12 @@
-[    
+[
     {
         "id": 1,
-        "nombre": "wen",
-        "autor": "asdasdasd",
-        "genero": "Novela",
+        "nombre": "hola2",
+        "autor": "asdas",
+        "genero": "Pop",
         "a\u00f1o": 1995,
-        "valoracion": "4\u2605",
-        "fecha_registro": "31/07/2025"
+        "duracion": "9:25",
+        "valoracion": "2\u2605",
+        "fecha_registro": "2025-08-01 10:54:34"
     }
 ]

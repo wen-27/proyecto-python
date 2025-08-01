@@ -143,7 +143,7 @@ def mostrar_canciones():
     print("-" * 110)
     
     for cancion in canciones_ordenadas:
-        print(f"{cancion['id']:<6} {cancion['nombre']:<20} {cancion['artista']:<20} {cancion['genero']:<12} "
+        print(f"{cancion['id']:<6} {cancion['nombre']:<20} {cancion['autor']:<20} {cancion['genero']:<12} "
               f"{cancion['año']:<6} {cancion.get('duracion', 'N/A'):<8} "
               f"{cancion.get('valoracion', 'Sin valorar'):<10} {cancion.get('fecha_registro', 'N/A'):<20}")
     

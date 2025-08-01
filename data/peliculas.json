@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": 1,
+        "nombre": "hola",
+        "autor": "qweqweqw",
+        "genero": "Aventura",
+        "a\u00f1o": 1955,
+        "valoracion": "4\u2605",
+        "fecha_registro": "2025-08-01 10:54:17"
+    }
+]
