@@ -62,15 +62,15 @@ def main():
 
                 if opcion == "1":
                     tipo = "nombre"
-                    termino = input(f"Ingrese el {tipo} a buscar :").lower().strip()    
+                    termino = input(f"Ingrese el {tipo} a buscar: ").lower().strip()    
                     buscar(termino, tipo)
                 elif opcion == "2":
                     tipo = "autor"
-                    termino = input(f"Ingrese el {tipo} a buscar :").lower().strip()            
+                    termino = input(f"Ingrese el {tipo} a buscar: ").lower().strip()            
                     buscar(termino, tipo)
                 elif opcion == "3":
                     tipo = "genero"
-                    termino = input(f"Ingrese el {tipo} a buscar :").lower().strip()
+                    termino = input(f"Ingrese el {tipo} a buscar: ").lower().strip()
                     buscar(termino, tipo)
                 elif opcion == "4":
                     break

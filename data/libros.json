@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": 1,
+        "nombre": "wen",
+        "autor": "jjj",
+        "genero": "Novela",
+        "a\u00f1o": 1999,
+        "valoracion": "Sin valorar",
+        "fecha_registro": "01/08/2025"
+    }
+]
