@@ -121,12 +121,12 @@ def mostrar_libros():
     libros_ordenados = sorted(libros, key=lambda x: x['id'])
     
     print("\n=== LISTA DE LIBROS ===")
-    print(f"{'ID':<5} {'Título':<25} {'Autor':<25} {'Género':<20} {'Año':<6} {'Valoración':<10}")
+    print(f"{'ID':<5} {'Título':<15} {'Autor':<15} {'Género':<15} {'Año':<10} {'Valoración':<10}")
     print("-" * 95)
     
     for libro in libros_ordenados:
-        print(f"{libro['id']:<5} {libro['nombre']:<25} {libro['autor']:<25} "
-            f"{libro['genero']:<20} {libro.get('año', 'N/A'):<6} "
+        print(f"{libro['id']:<5} {libro['nombre']:<15} {libro['autor']:<15} "
+            f"{libro['genero']:<15} {libro.get('año', 'N/A'):<10} "
             f"{libro.get('valoracion', 'Sin valorar'):<10}")
     
     print(f"\nTotal de libros: {len(libros)}")

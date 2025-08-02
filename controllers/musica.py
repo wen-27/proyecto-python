@@ -139,13 +139,13 @@ def mostrar_canciones():
     canciones_ordenadas = sorted(canciones, key=lambda x: x['id'])
     
     print("\n=== LISTA DE CANCIONES ===")
-    print(f"{'ID':<6} {'Canción':<20} {'Artista':<20} {'Género':<12} {'Año':<6} {'Duración':<8} {'Valoración':<10} {'Registro':<20}")
-    print("-" * 110)
+    print(f"{'ID':<6} {'Canción':<20} {'Artista':<20} {'Género':<12} {'Año':<10} {'Duración':<15} {'Valoración':<15} {'Registro':<25}")
+    print("-" * 130)
     
     for cancion in canciones_ordenadas:
         print(f"{cancion['id']:<6} {cancion['nombre']:<20} {cancion['autor']:<20} {cancion['genero']:<12} "
-              f"{cancion['año']:<6} {cancion.get('duracion', 'N/A'):<8} "
-              f"{cancion.get('valoracion', 'Sin valorar'):<10} {cancion.get('fecha_registro', 'N/A'):<20}")
+              f"{cancion['año']:<10} {cancion.get('duracion', 'N/A'):<15} "
+              f"{cancion.get('valoracion', 'Sin valorar'):<15} {cancion.get('fecha_registro', 'N/A'):<25}")
     
     print(f"\nTotal de canciones: {len(canciones)}")
 

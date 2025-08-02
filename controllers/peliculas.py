@@ -123,12 +123,12 @@ def mostrar_peliculas():
     peliculas_ordenadas = sorted(peliculas, key=lambda x: x['id'])
     
     print("\n=== LISTA DE PELÍCULAS ===")
-    print(f"{'ID':<5} {'Título':<25} {'Director':<20} {'Género':<15} {'Año':<6} {'Valoración':<10} {'Registro':<20}")
+    print(f"{'ID':<6} {'Título':<20} {'Director':<20} {'Género':<12} {'Año':<10} {'Valoración':<15} {'Registro':<20}")
     print("-" * 100)
     
     for pelicula in peliculas_ordenadas:
-        print(f"{pelicula['id']:<5} {pelicula['nombre']:<25} {pelicula['autor']:<20} "
-              f"{pelicula['genero']:<15} {pelicula['año']:<6} "
+        print(f"{pelicula['id']:<6} {pelicula['nombre']:<20} {pelicula['autor']:<20} "
+              f"{pelicula['genero']:<12} {pelicula['año']:<10} "
               f"{pelicula.get('valoracion', 'Sin valorar'):<10} {pelicula.get('fecha_registro', 'N/A'):<20}")
     
     print(f"\nTotal de películas: {len(peliculas)}")
